@@ -1,16 +1,15 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+onready var trail:Line2D = $Trail
+onready var trail_length: int = 100
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	trail.set_as_toplevel(true)
+	trail.clear_points()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _physics_process(delta):
+	#trail.add_point(self.global_position)
+	if trail.get_point_count() > trail_length:
+		trail.remove_point(0)
