@@ -6,7 +6,13 @@ export var orbit_color:Color
 
 export var quality:int=32
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+onready var ship=$Ship
+
+
+func _ready():
+	ship.position=Vector2(0, radius)
+	ship.rotation_degrees=90
+
 func _process(delta):
 	self.rotate(orbit_speed*delta)
 	update()
