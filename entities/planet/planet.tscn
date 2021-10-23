@@ -9,7 +9,7 @@
 radius = 130.0
 
 [node name="Planet" type="Node2D" groups=[
-"planet",
+"Planet",
 ]]
 modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
 script = ExtResource( 1 )

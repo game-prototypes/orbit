@@ -35,6 +35,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ResourcesLabel" type="Label" parent="PlanetInfo"]
+margin_left = 5.0
+margin_top = 37.0
+margin_right = 45.0
+margin_bottom = 51.0
+text = "Resources:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BuildShipButton" type="Button" parent="PlanetInfo"]
 anchor_top = 1.0
 anchor_bottom = 1.0

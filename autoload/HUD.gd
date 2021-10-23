@@ -1,8 +1,9 @@
 extends CanvasLayer
 
 
-onready var planet_name:Label=$PlanetInfo/PlanetName
+onready var planet_name_label:Label=$PlanetInfo/PlanetName
 onready var ships_label:Label=$PlanetInfo/ShipsLabel
+onready var reosurces_label:Label=$PlanetInfo/ResourcesLabel
 onready var planet_info:Panel=$PlanetInfo
 
 var planet:Planet
@@ -15,9 +16,10 @@ func display_planet_info(planet: Planet):
 
 func _process(delta: float) -> void:
 	if planet:
-		planet_name.text=planet.planet_name
+		planet_name_label.text=planet.planet_name
 		planet_info.visible=true
 		ships_label.text="Ships: "+ String(planet.ships.size())
+		reosurces_label.text="Resources: "+ String(planet.resources) + " (+" + String(planet.production_rate)+ ")"
 
 func hide_planet_info():
 	planet_info.visible=false

@@ -10,17 +10,19 @@ export(PackedScene) var ship_scene
 onready var orbit=$Orbit
 
 var ships=[]
+var resources=5000
+var production_rate=100
 
-func _ready() -> void:
-	build_ship()
-	build_ship()
+const ship_price=1500
 
 func toggle_info():
 	HUD.display_planet_info(self)
 
 func build_ship():
-	var ship=ship_scene.instance()
-	ships.append(ship)
+	if resources >= ship_price:
+		resources-=ship_price
+		var ship=ship_scene.instance()
+		ships.append(ship)
 
 func _on_click(_button_index) -> void:
 	toggle_info()
@@ -30,3 +32,6 @@ func can_launch_ship() -> bool:
 
 func launch_ship() -> void:
 	orbit.add_ship(ships.pop_back())
+
+func _on_update() -> void:
+	resources+=production_rate
