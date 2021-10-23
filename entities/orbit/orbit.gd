@@ -1,27 +1,22 @@
+tool
 extends Node2D
 
-var orbit_speed=1
+var orbit_speed=0.1
 export var radius=8
 export var orbit_color:Color
 
-export var quality:int=32
+export var quality:int=128
 
-onready var ship=$Ship
-
-
-func _ready():
-	ship.position=Vector2(0, radius)
-	ship.rotation_degrees=90
+var ships=[]
 
 func _process(delta):
-	self.rotate(orbit_speed*delta)
+	if not Engine.editor_hint:
+		self.rotate(orbit_speed*delta)
 	update()
 
 
 func _draw():
 	draw_circle_arc(Vector2.ZERO, radius, 0, 360, orbit_color)
-
-
 
 func draw_circle_arc(center, radius, angle_from, angle_to, color):
 	var nb_points = 16
@@ -33,3 +28,17 @@ func draw_circle_arc(center, radius, angle_from, angle_to, color):
 
 	for index_point in range(quality):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color)
+
+
+func add_ship(ship) -> void:
+	ships.append(ship)
+	add_child(ship)
+	var ship_degrees=rand_range(0, 359)
+	var ship_radians=deg2rad(ship_degrees)
+
+	var x = radius*cos(ship_radians);
+	var y = radius*sin(ship_radians);
+
+	ship.position=Vector2(x,y)
+
+	ship.rotation_degrees=ship_degrees

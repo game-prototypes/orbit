@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://entities/planet/planet.gd"
+} ]
+_global_script_class_icons={
+"Planet": ""
+}
+
 [application]
 
 config/name="orbit"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+HUD="*res://autoload/HUD.tscn"
 
 [input]
 

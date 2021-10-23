@@ -6,6 +6,9 @@ export (Vector2) var zoom_constraint=Vector2(1,5)
 
 var pan_delta=Vector2(0,0)
 
+func _ready() -> void:
+	randomize()
+
 func _unhandled_input(event: InputEvent)->void:
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("zoom+"):
