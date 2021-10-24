@@ -9,11 +9,11 @@ export(PackedScene) var ship_scene
 
 onready var orbit=$Orbit
 
-var ships=[]
-var resources=5000
-var production_rate=100
+export var resources=5000
+export var production_rate=100
 
 const ship_price=1500
+var ships=[]
 
 func toggle_info():
 	HUD.display_planet_info(self)

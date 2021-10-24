@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/planet/planet.gd" type="Script" id=1]
 [ext_resource path="res://assets/circle.png" type="Texture" id=2]
 [ext_resource path="res://entities/orbit/orbit.gd" type="Script" id=3]
-[ext_resource path="res://clickable_item.gd" type="Script" id=4]
+[ext_resource path="res://scripts/clickable_item.gd" type="Script" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="CircleShape2D" id=3]
 radius = 130.0
 
 [node name="Planet" type="Node2D" groups=[
@@ -21,13 +23,19 @@ texture = ExtResource( 2 )
 [node name="Orbit" type="Node2D" parent="."]
 rotation = 8.80033
 script = ExtResource( 3 )
-radius = 200
 orbit_color = Color( 0, 0.701961, 0.917647, 1 )
+
+[node name="Area2D" type="Area2D" parent="Orbit"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit/Area2D"]
+shape = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
+[connection signal="on_click" from="Orbit/Area2D" to="Orbit" method="_on_click"]
 [connection signal="on_click" from="Area2D" to="." method="_on_click"]

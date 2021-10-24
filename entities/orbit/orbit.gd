@@ -1,13 +1,22 @@
 tool
 extends Node2D
 
-var orbit_speed=0.1
-export var radius=8
+const orbit_speed=0.1
+const orbit_click_padding=20
+
+export var radius=200
 export var orbit_color:Color
 
 export var quality:int=128
 
 var ships=[]
+
+func _ready() -> void:
+	var collisionShape:CollisionShape2D=$Area2D/CollisionShape2D
+	var orbitColliderShape:=CircleShape2D.new()
+	orbitColliderShape.radius=radius+orbit_click_padding
+	collisionShape.shape=orbitColliderShape
+	$Area2D.ignore_center_radius=radius-orbit_click_padding
 
 func _process(delta):
 	if not Engine.editor_hint:
@@ -42,3 +51,11 @@ func add_ship(ship) -> void:
 	ship.position=Vector2(x,y)
 
 	ship.rotation_degrees=ship_degrees
+
+
+func _on_click(button_index) -> void:
+	print("CLICK Orbit")
+
+
+func _on_mouse_entered() -> void:
+	print("Mouse entered")

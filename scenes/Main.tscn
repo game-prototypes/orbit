@@ -17,6 +17,15 @@ zoom_constraint = Vector2( 0.2, 5 )
 planet_name = "Gallifrey"
 ship_scene = ExtResource( 2 )
 
+[node name="Planet2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1069.92, 600.034 )
+scale = Vector2( 0.7, 0.7 )
+planet_name = "E-Arth"
+radius = 80.0
+ship_scene = ExtResource( 2 )
+resources = 0
+production_rate = 0
+
 [node name="PlanetUpdater" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
