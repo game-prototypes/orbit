@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://addons/donut_collision_polygon2D/donut_collision_polygon2D.gd"
 }, {
 "base": "Node2D",
+"class": "Orbit",
+"language": "GDScript",
+"path": "res://entities/orbit/orbit.gd"
+}, {
+"base": "Node2D",
 "class": "Planet",
 "language": "GDScript",
 "path": "res://entities/planet/planet.gd"
 } ]
 _global_script_class_icons={
 "DonutCollisionPolygon2D": "",
+"Orbit": "",
 "Planet": ""
 }
 

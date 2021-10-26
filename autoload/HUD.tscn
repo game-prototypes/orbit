@@ -69,5 +69,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OrbitInfo" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.721569 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -191.0
+margin_bottom = 229.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrbitName" type="Label" parent="OrbitInfo"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 170.0
+margin_bottom = 22.0
+text = "Planet Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipsLabel" type="Label" parent="OrbitInfo"]
+margin_left = 5.0
+margin_top = 21.0
+margin_right = 45.0
+margin_bottom = 35.0
+text = "Ships: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="PlanetInfo/BuildShipButton" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="PlanetInfo/LaunchShip" to="." method="_on_launch_ship_pressed"]
