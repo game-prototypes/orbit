@@ -12,11 +12,8 @@ export var quality:int=128
 var ships=[]
 
 func _ready() -> void:
-	var collisionShape:CollisionShape2D=$Area2D/CollisionShape2D
-	var orbitColliderShape:=CircleShape2D.new()
-	orbitColliderShape.radius=radius+orbit_click_padding
-	collisionShape.shape=orbitColliderShape
-	$Area2D.ignore_center_radius=radius-orbit_click_padding
+	var donut_collider:DonutCollisionPolygon2D=$Area2D/DonutCollisionPolygon2D
+	donut_collider.radius=radius
 
 func _process(delta):
 	if not Engine.editor_hint:
