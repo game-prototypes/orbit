@@ -28,6 +28,10 @@ config/icon="res://icon.png"
 
 HUD="*res://autoload/HUD.tscn"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/donut_collision_polygon2D/plugin.cfg" )
+
 [input]
 
 camera_padding_right={

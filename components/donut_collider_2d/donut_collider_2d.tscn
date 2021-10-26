@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://components/donut_collider/donut_collider.gd" type="Script" id=1]
+[ext_resource path="res://components/donut_collider_2d/donut_collider_2d.gd" type="Script" id=1]
 
-[node name="DonutCollider" type="Area2D"]
+[node name="DonutCollider2D" type="Area2D"]
 script = ExtResource( 1 )
 width = 1.0
 

@@ -1,15 +1,17 @@
 tool
 extends Area2D
 
-
 export(float) var radius:=10.0 setget set_radius
 export(float) var width:=2.0 setget set_width
 
 const quality:=64
 
-onready var polygon:CollisionPolygon2D=$CollisionPolygon2D
+var collision_polygon: CollisionPolygon2D
 
 func _ready()->void:
+	var collision_polygon=CollisionPolygon2D.new()
+	collision_polygon.build_mode=CollisionPolygon2D.BUILD_SOLIDS
+	print(collision_polygon)
 	update_polygons()
 
 func set_radius(rad:float) -> void:
@@ -22,7 +24,7 @@ func set_width(w:float) -> void:
 
 func update_polygons() -> void:
 	var points=get_polygon_points(Vector2(0,0), radius)
-	polygon.polygon=points
+	collision_polygon.polygon=points
 
 func get_polygon_points(center, radius) -> PoolVector2Array:
 	var half_width=width/2
@@ -35,7 +37,6 @@ func get_polygon_points(center, radius) -> PoolVector2Array:
 	points.append_array(inner_circle)
 	points.append(outer_circle[0]+Vector2(0.0001, 0.0001))
 	return points
-	#return get_circle_points(center, radius, 0, 360)
 
 func get_circle_points(center, radius, angle_from=0, angle_to=360) -> PoolVector2Array:
 	var nb_points = 16
@@ -46,6 +47,3 @@ func get_circle_points(center, radius, angle_from=0, angle_to=360) -> PoolVector
 		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
 
 	return points_arc
-	#for index_point in range(quality):
-	#	draw_line(points_arc[index_point], points_arc[index_point + 1], color)
-

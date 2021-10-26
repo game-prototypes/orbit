@@ -4,10 +4,9 @@
 [ext_resource path="res://assets/circle.png" type="Texture" id=2]
 [ext_resource path="res://entities/orbit/orbit.gd" type="Script" id=3]
 [ext_resource path="res://scripts/clickable_item.gd" type="Script" id=4]
+[ext_resource path="res://addons/donut_collision_polygon2D/donut_collision_polygon2D.gd" type="Script" id=5]
 
-[sub_resource type="CircleShape2D" id=4]
-
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 130.0
 
 [node name="Planet" type="Node2D" groups=[
@@ -21,21 +20,24 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="Orbit" type="Node2D" parent="."]
-rotation = 8.80033
 script = ExtResource( 3 )
 orbit_color = Color( 0, 0.701961, 0.917647, 1 )
 
 [node name="Area2D" type="Area2D" parent="Orbit"]
 script = ExtResource( 4 )
+ignore_center_radius = 180
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit/Area2D"]
-shape = SubResource( 4 )
+[node name="DonutCollisionPolygon2D" type="CollisionPolygon2D" parent="Orbit/Area2D"]
+polygon = PoolVector2Array( 1.28588e-14, -210, 40.0699, -206.142, 78.6674, -194.709, 114.374, -176.121, 148.492, -148.492, 174.098, -117.431, 193.306, -82.0535, 205.411, -43.6615, 210, 0, 206.142, 40.0699, 194.709, 78.6674, 176.121, 114.374, 148.492, 148.492, 117.431, 174.098, 82.0535, 193.306, 43.6615, 205.411, 1.28588e-14, 210, -40.0699, 206.142, -78.6674, 194.709, -114.374, 176.121, -148.492, 148.492, -174.098, 117.431, -193.306, 82.0535, -205.411, 43.6615, -210, 2.57176e-14, -206.142, -40.0699, -194.709, -78.6674, -176.121, -114.374, -148.492, -148.492, -117.431, -174.098, -82.0535, -193.306, -43.6615, -205.411, -3.85764e-14, -210, -3.49024e-14, -190, -39.5032, -185.848, -74.2389, -174.896, -106.247, -157.517, -134.35, -134.35, -159.347, -103.481, -176.165, -71.1752, -186.509, -36.2537, -190, 2.32683e-14, -185.848, 39.5032, -174.896, 74.2389, -157.517, 106.247, -134.35, 134.35, -103.481, 159.347, -71.1752, 176.165, -36.2537, 186.509, 1.16341e-14, 190, 39.5032, 185.848, 74.2389, 174.896, 106.247, 157.517, 134.35, 134.35, 159.347, 103.481, 176.165, 71.1752, 186.509, 36.2537, 190, 0, 185.848, -39.5032, 174.896, -74.2389, 157.517, -106.247, 134.35, -134.35, 103.481, -159.347, 71.1752, -176.165, 36.2537, -186.509, 1.16341e-14, -190, 0.0001, -210 )
+script = ExtResource( 5 )
+radius = 200.0
+width = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [connection signal="on_click" from="Orbit/Area2D" to="Orbit" method="_on_click"]
 [connection signal="on_click" from="Area2D" to="." method="_on_click"]
