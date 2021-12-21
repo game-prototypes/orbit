@@ -22,7 +22,6 @@ func display_planet_info(planet: Planet):
 	self.orbit=null
 
 func display_orbit_info(orbit:Orbit):
-	print("DISPLAY ORBIT INFO")
 	self.orbit=orbit
 	self.planet=null
 
